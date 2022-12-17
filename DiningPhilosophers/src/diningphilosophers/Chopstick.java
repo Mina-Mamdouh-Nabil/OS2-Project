@@ -1,4 +1,4 @@
-package dining.philosophers.problem;
+package diningphilosophers;
 
 import java.util.concurrent.Semaphore;
 

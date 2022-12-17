@@ -1,4 +1,4 @@
-package dining.philosophers.problem;
+package diningphilosophers;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadLocalRandom;
@@ -24,22 +24,22 @@ public class Philosopher extends Thread {
     public void run() {
         while (!eat) {
             System.out.println("Philosopher " + number + " is thinking");
-            if (number == 0) {
+            if (number %2== 0) {
                 leftChopstick.take();
-                System.out.println("Philosopher " + number + " took the left fork " + leftChopstick.number);
+                System.out.println("Philosopher " + number + " took the left chopstick " + leftChopstick.number);
                 rightChopstick.take();
-                System.out.println("Philosopher " + number + " took the right fork " + rightChopstick.number);
+                System.out.println("Philosopher " + number + " took the right chopstick " + rightChopstick.number);
             } else {
                 rightChopstick.take();
-                System.out.println("Philosopher " + number + " took the right fork " + rightChopstick.number);
+                System.out.println("Philosopher " + number + " took the right chopstick " + rightChopstick.number);
                 leftChopstick.take();
-                System.out.println("Philosopher " + number + " took the left fork " + leftChopstick.number);
+                System.out.println("Philosopher " + number + " took the left chopstick " + leftChopstick.number);
             }
             System.out.println("Philosopher " + number + " is eating...");
             leftChopstick.put();
-            System.out.println("Philosopher " + number + " put the left fork " + leftChopstick.number);
+            System.out.println("Philosopher " + number + " put the left chopstick " + leftChopstick.number);
             rightChopstick.put();
-            System.out.println("Philosopher " + number + " put the right fork " + rightChopstick.number);
+            System.out.println("Philosopher " + number + " put the right chopstick " + rightChopstick.number);
             eat = true;
             try {
                 sem.acquire();
